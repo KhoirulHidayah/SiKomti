@@ -13,11 +13,11 @@ Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('register', [AuthController::class, 'register']);
 Route::post('register', [AuthController::class, 'store']);
 // Keep this route to point to the WelcomeController
-Route::get('/', [WelcomeController::class, 'index']);
+//Route::get('/', [WelcomeController::class, 'index']);
 // Route::resource('level', LevelController::class);
 
 Route::middleware('auth')->group(function () {
-    
+    Route::get('/', [WelcomeController::class, 'index']);    
 });
 
 Route::group(['prefix' => 'user', 'middleware'=>'authorize:ADM'], function() {
